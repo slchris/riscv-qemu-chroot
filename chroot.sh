@@ -9,7 +9,7 @@ set -e
 [[ -w ${rootfs} ]] || { echo "${rootfs} does not exists or is unwritable"; exit 1; }
 [[ -x ${rootfs}${chroot_static_qemu_bin#/} ]] || \
   { echo "${rootfs}${chroot_static_qemu_bin#/} does not exists or is unexecutable"; exit 1; }
-interpreters="$(grep 'interpreter' /proc/sys/fs/binfmt_misc/qemu-*)"
+interpreters="$(grep 'interpreter' /proc/sys/fs/binfmt_misc/riscv64)"
 interpreter_matched=0
 while read -r _ interpreter; do
   if [[ ${interpreter} == ${chroot_static_qemu_bin} ]]; then
